@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 11 Generating R documentation | Offensive Programming Book</title>
+  <meta name="description" content="wyz.code.offensiveProgramming package related documentation" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 11 Generating R documentation | Offensive Programming Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="figures/op.png" />
+  <meta property="og:description" content="wyz.code.offensiveProgramming package related documentation" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 11 Generating R documentation | Offensive Programming Book" />
+  
+  <meta name="twitter:description" content="wyz.code.offensiveProgramming package related documentation" />
+  <meta name="twitter:image" content="figures/op.png" />
+
+<meta name="author" content="Fabien GELINEAU neonira@gmail.com" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="meta-testing.html"/>
+<link rel="next" href="implementation-figures.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Offensive Programming Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#book-version"><i class="fa fa-check"></i>Book version</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#book-production"><i class="fa fa-check"></i>Book production</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="programming-styles.html"><a href="programming-styles.html"><i class="fa fa-check"></i><b>1</b> Programming styles</a><ul>
+<li class="chapter" data-level="1.1" data-path="programming-styles.html"><a href="programming-styles.html#defensive-programming-style"><i class="fa fa-check"></i><b>1.1</b> Defensive programming style</a></li>
+<li class="chapter" data-level="1.2" data-path="programming-styles.html"><a href="programming-styles.html#offensive-programming-style"><i class="fa fa-check"></i><b>1.2</b> Offensive programming style</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="application-in-r-language.html"><a href="application-in-r-language.html"><i class="fa fa-check"></i><b>2</b> Application in R language</a><ul>
+<li class="chapter" data-level="2.1" data-path="application-in-r-language.html"><a href="application-in-r-language.html#a-simple-case"><i class="fa fa-check"></i><b>2.1</b> A simple case</a></li>
+<li class="chapter" data-level="2.2" data-path="application-in-r-language.html"><a href="application-in-r-language.html#defensive-programming"><i class="fa fa-check"></i><b>2.2</b> Defensive programming</a></li>
+<li class="chapter" data-level="2.3" data-path="application-in-r-language.html"><a href="application-in-r-language.html#offensive-programming"><i class="fa fa-check"></i><b>2.3</b> Offensive programming</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="application-in-r-language.html"><a href="application-in-r-language.html#what-are-the-differences"><i class="fa fa-check"></i><b>2.3.1</b> What are the differences?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="application-in-r-language.html"><a href="application-in-r-language.html#semantic-argument-naming"><i class="fa fa-check"></i><b>2.3.2</b> Semantic argument naming</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="application-in-r-language.html"><a href="application-in-r-language.html#back-to-definition"><i class="fa fa-check"></i><b>2.4</b> Back to definition</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="activating-offensive-programming.html"><a href="activating-offensive-programming.html"><i class="fa fa-check"></i><b>3</b> Activating offensive programming</a><ul>
+<li class="chapter" data-level="3.1" data-path="activating-offensive-programming.html"><a href="activating-offensive-programming.html#package-discovery"><i class="fa fa-check"></i><b>3.1</b> Package discovery</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-type-factory.html"><a href="the-type-factory.html"><i class="fa fa-check"></i><b>4</b> The type factory</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-type-factory.html"><a href="the-type-factory.html#get-recorded-types-inventory"><i class="fa fa-check"></i><b>4.1</b> Get recorded types inventory</a></li>
+<li class="chapter" data-level="4.2" data-path="the-type-factory.html"><a href="the-type-factory.html#understanding-the-model"><i class="fa fa-check"></i><b>4.2</b> Understanding the model</a></li>
+<li class="chapter" data-level="4.3" data-path="the-type-factory.html"><a href="the-type-factory.html#register-your-own-type"><i class="fa fa-check"></i><b>4.3</b> Register your own type</a></li>
+<li class="chapter" data-level="4.4" data-path="the-type-factory.html"><a href="the-type-factory.html#get-access-to-verification-functions"><i class="fa fa-check"></i><b>4.4</b> Get access to verification functions</a></li>
+<li class="chapter" data-level="4.5" data-path="the-type-factory.html"><a href="the-type-factory.html#some-hints"><i class="fa fa-check"></i><b>4.5</b> Some hints</a></li>
+<li class="chapter" data-level="4.6" data-path="the-type-factory.html"><a href="the-type-factory.html#enforcing-use-of-your-own-type-factory"><i class="fa fa-check"></i><b>4.6</b> Enforcing use of your own type factory</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="semantic-names.html"><a href="semantic-names.html"><i class="fa fa-check"></i><b>5</b> Semantic names</a><ul>
+<li class="chapter" data-level="5.1" data-path="semantic-names.html"><a href="semantic-names.html#what-is-semantic-naming"><i class="fa fa-check"></i><b>5.1</b> What is semantic naming?</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="semantic-names.html"><a href="semantic-names.html#naming-recommendation"><i class="fa fa-check"></i><b>5.1.1</b> Naming recommendation</a></li>
+<li class="chapter" data-level="5.1.2" data-path="semantic-names.html"><a href="semantic-names.html#semantic-naming"><i class="fa fa-check"></i><b>5.1.2</b> Semantic naming</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="semantic-names.html"><a href="semantic-names.html#verifying-names"><i class="fa fa-check"></i><b>5.2</b> Verifying names</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="semantic-names.html"><a href="semantic-names.html#verifying-a-function-parameter-or-return-type-declaration"><i class="fa fa-check"></i><b>5.2.1</b> Verifying a function parameter or return type declaration</a></li>
+<li class="chapter" data-level="5.2.2" data-path="semantic-names.html"><a href="semantic-names.html#verifying-a-class-name"><i class="fa fa-check"></i><b>5.2.2</b> Verifying a class name</a></li>
+<li class="chapter" data-level="5.2.3" data-path="semantic-names.html"><a href="semantic-names.html#verifying-a-function-name"><i class="fa fa-check"></i><b>5.2.3</b> Verifying a function name</a></li>
+<li class="chapter" data-level="5.2.4" data-path="semantic-names.html"><a href="semantic-names.html#get-naming-balance-from-an-r-object"><i class="fa fa-check"></i><b>5.2.4</b> Get naming balance from an R object</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="evaluation-modes.html"><a href="evaluation-modes.html"><i class="fa fa-check"></i><b>6</b> Evaluation modes</a><ul>
+<li class="chapter" data-level="6.1" data-path="evaluation-modes.html"><a href="evaluation-modes.html#understanding-evaluation-modes"><i class="fa fa-check"></i><b>6.1</b> Understanding evaluation modes</a></li>
+<li class="chapter" data-level="6.2" data-path="evaluation-modes.html"><a href="evaluation-modes.html#instantiating-evaluation-mode"><i class="fa fa-check"></i><b>6.2</b> Instantiating evaluation mode</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="running-functions.html"><a href="running-functions.html"><i class="fa fa-check"></i><b>7</b> Running functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="running-functions.html"><a href="running-functions.html#prerequisites"><i class="fa fa-check"></i><b>7.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="7.2" data-path="running-functions.html"><a href="running-functions.html#transient-invocations"><i class="fa fa-check"></i><b>7.2</b> Transient invocations</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="running-functions.html"><a href="running-functions.html#nominal-case"><i class="fa fa-check"></i><b>7.2.1</b> Nominal case</a></li>
+<li class="chapter" data-level="7.2.2" data-path="running-functions.html"><a href="running-functions.html#prerequisite-mismatch"><i class="fa fa-check"></i><b>7.2.2</b> Prerequisite mismatch</a></li>
+<li class="chapter" data-level="7.2.3" data-path="running-functions.html"><a href="running-functions.html#object-function-call"><i class="fa fa-check"></i><b>7.2.3</b> Object function call</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="running-functions.html"><a href="running-functions.html#persistent-invocations"><i class="fa fa-check"></i><b>7.3</b> Persistent invocations</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="running-functions.html"><a href="running-functions.html#verifying-recorded-information"><i class="fa fa-check"></i><b>7.3.1</b> Verifying recorded information</a></li>
+<li class="chapter" data-level="7.3.2" data-path="running-functions.html"><a href="running-functions.html#nominal-persistent-case"><i class="fa fa-check"></i><b>7.3.2</b> Nominal persistent case</a></li>
+<li class="chapter" data-level="7.3.3" data-path="running-functions.html"><a href="running-functions.html#subtile-change"><i class="fa fa-check"></i><b>7.3.3</b> Subtile change</a></li>
+<li class="chapter" data-level="7.3.4" data-path="running-functions.html"><a href="running-functions.html#call-case-with-named-and-positional-parameters"><i class="fa fa-check"></i><b>7.3.4</b> Call case with named and positional parameters</a></li>
+<li class="chapter" data-level="7.3.5" data-path="running-functions.html"><a href="running-functions.html#call-case-with-ellipsis"><i class="fa fa-check"></i><b>7.3.5</b> Call case with ellipsis</a></li>
+<li class="chapter" data-level="7.3.6" data-path="running-functions.html"><a href="running-functions.html#second-call-case-with-ellipsis"><i class="fa fa-check"></i><b>7.3.6</b> Second call case with ellipsis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="running-test-cases.html"><a href="running-test-cases.html"><i class="fa fa-check"></i><b>8</b> Running test cases</a><ul>
+<li class="chapter" data-level="8.1" data-path="running-test-cases.html"><a href="running-test-cases.html#embedding-test-cases"><i class="fa fa-check"></i><b>8.1</b> Embedding test cases</a></li>
+<li class="chapter" data-level="8.2" data-path="running-test-cases.html"><a href="running-test-cases.html#discovering-test-cases"><i class="fa fa-check"></i><b>8.2</b> Discovering test cases</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="running-test-cases.html"><a href="running-test-cases.html#test-case-verifications"><i class="fa fa-check"></i><b>8.2.1</b> Test case verifications</a></li>
+<li class="chapter" data-level="8.2.2" data-path="running-test-cases.html"><a href="running-test-cases.html#getting-instrumented-functions"><i class="fa fa-check"></i><b>8.2.2</b> Getting instrumented functions</a></li>
+<li class="chapter" data-level="8.2.3" data-path="running-test-cases.html"><a href="running-test-cases.html#getting-test-cases-descriptions"><i class="fa fa-check"></i><b>8.2.3</b> Getting test cases descriptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="running-test-cases.html"><a href="running-test-cases.html#running-test-cases-1"><i class="fa fa-check"></i><b>8.3</b> Running test cases</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="running-test-cases.html"><a href="running-test-cases.html#run-a-single-test-case"><i class="fa fa-check"></i><b>8.3.1</b> Run a single test case</a></li>
+<li class="chapter" data-level="8.3.2" data-path="running-test-cases.html"><a href="running-test-cases.html#run-several-test-cases"><i class="fa fa-check"></i><b>8.3.2</b> Run several test cases</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html"><i class="fa fa-check"></i><b>9</b> Generating <cite class='it'>testthat</cite> test files</a><ul>
+<li class="chapter" data-level="9.1" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#package-wyz.code.testthat-in-action"><i class="fa fa-check"></i><b>9.1</b> Package <cite class='it'>wyz.code.testthat</cite> in action</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#setting-up-the-context"><i class="fa fa-check"></i><b>9.1.1</b> Setting up the context</a></li>
+<li class="chapter" data-level="9.1.2" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#loading-objects"><i class="fa fa-check"></i><b>9.1.2</b> Loading objects</a></li>
+<li class="chapter" data-level="9.1.3" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#unit-test-file-generation"><i class="fa fa-check"></i><b>9.1.3</b> Unit test file generation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#generated-unit-test-file-content"><i class="fa fa-check"></i><b>9.2</b> Generated unit test file content</a></li>
+<li class="chapter" data-level="9.3" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#caveats"><i class="fa fa-check"></i><b>9.3</b> Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="meta-testing.html"><a href="meta-testing.html"><i class="fa fa-check"></i><b>10</b> Meta-testing</a><ul>
+<li class="chapter" data-level="10.1" data-path="meta-testing.html"><a href="meta-testing.html#traditional-way-of-testing"><i class="fa fa-check"></i><b>10.1</b> Traditional way of testing</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="meta-testing.html"><a href="meta-testing.html#empirical-approach"><i class="fa fa-check"></i><b>10.1.1</b> Empirical approach</a></li>
+<li class="chapter" data-level="10.1.2" data-path="meta-testing.html"><a href="meta-testing.html#more-industrial-approach"><i class="fa fa-check"></i><b>10.1.2</b> More industrial approach</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="meta-testing.html"><a href="meta-testing.html#meta-testing-1"><i class="fa fa-check"></i><b>10.2</b> Meta testing</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="meta-testing.html"><a href="meta-testing.html#meta-testing-approach"><i class="fa fa-check"></i><b>10.2.1</b> Meta testing approach</a></li>
+<li class="chapter" data-level="10.2.2" data-path="meta-testing.html"><a href="meta-testing.html#create-a-wrapper-function"><i class="fa fa-check"></i><b>10.2.2</b> Create a wrapper function</a></li>
+<li class="chapter" data-level="10.2.3" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge"><i class="fa fa-check"></i><b>10.2.3</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.2.4" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests"><i class="fa fa-check"></i><b>10.2.4</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="meta-testing.html"><a href="meta-testing.html#a-more-complex-example"><i class="fa fa-check"></i><b>10.3</b> A more complex example</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="meta-testing.html"><a href="meta-testing.html#create-a-wrapper-function-1"><i class="fa fa-check"></i><b>10.3.1</b> Create a wrapper function</a></li>
+<li class="chapter" data-level="10.3.2" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge-1"><i class="fa fa-check"></i><b>10.3.2</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.3.3" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests-1"><i class="fa fa-check"></i><b>10.3.3</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="meta-testing.html"><a href="meta-testing.html#an-example-using-ellipsis"><i class="fa fa-check"></i><b>10.4</b> An example using ellipsis</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="meta-testing.html"><a href="meta-testing.html#create-a-wrapper-function-2"><i class="fa fa-check"></i><b>10.4.1</b> Create a wrapper function</a></li>
+<li class="chapter" data-level="10.4.2" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge-2"><i class="fa fa-check"></i><b>10.4.2</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.4.3" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests-2"><i class="fa fa-check"></i><b>10.4.3</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="meta-testing.html"><a href="meta-testing.html#a-tricky-example"><i class="fa fa-check"></i><b>10.5</b> A tricky example</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="meta-testing.html"><a href="meta-testing.html#create-wrapper-function"><i class="fa fa-check"></i><b>10.5.1</b> Create wrapper function</a></li>
+<li class="chapter" data-level="10.5.2" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge-3"><i class="fa fa-check"></i><b>10.5.2</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.5.3" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests-3"><i class="fa fa-check"></i><b>10.5.3</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="meta-testing.html"><a href="meta-testing.html#pitfalls-to-avoid"><i class="fa fa-check"></i><b>10.6</b> Pitfalls to avoid</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html"><i class="fa fa-check"></i><b>11</b> Generating <cite class='it'>R</cite> documentation</a><ul>
+<li class="chapter" data-level="11.1" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#conceptual-approach"><i class="fa fa-check"></i><b>11.1</b> Conceptual approach</a></li>
+<li class="chapter" data-level="11.2" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#vignettes"><i class="fa fa-check"></i><b>11.2</b> Vignettes</a></li>
+<li class="chapter" data-level="11.3" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#api"><i class="fa fa-check"></i><b>11.3</b> <cite class='it'>API</cite></a></li>
+<li class="chapter" data-level="11.4" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#best-generation-strategy"><i class="fa fa-check"></i><b>11.4</b> Best generation strategy</a></li>
+<li class="chapter" data-level="11.5" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#pure-r-function"><i class="fa fa-check"></i><b>11.5</b> Pure <cite class='it'>R</cite> function</a></li>
+<li class="chapter" data-level="11.6" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#offensive-programming-r-function"><i class="fa fa-check"></i><b>11.6</b> Offensive programming <cite class='it'>R</cite> function</a></li>
+<li class="chapter" data-level="11.7" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#known-limits"><i class="fa fa-check"></i><b>11.7</b> Known limits</a></li>
+<li class="chapter" data-level="11.8" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#opportunities"><i class="fa fa-check"></i><b>11.8</b> Opportunities</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="implementation-figures.html"><a href="implementation-figures.html"><i class="fa fa-check"></i><b>12</b> Implementation figures</a><ul>
+<li class="chapter" data-level="12.1" data-path="implementation-figures.html"><a href="implementation-figures.html#file-statistics"><i class="fa fa-check"></i><b>12.1</b> File statistics</a></li>
+<li class="chapter" data-level="12.2" data-path="implementation-figures.html"><a href="implementation-figures.html#code-statistics"><i class="fa fa-check"></i><b>12.2</b> Code statistics</a></li>
+<li class="chapter" data-level="12.3" data-path="implementation-figures.html"><a href="implementation-figures.html#tests-and-coverage"><i class="fa fa-check"></i><b>12.3</b> Tests and coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>13</b> Conclusion</a><ul>
+<li class="chapter" data-level="13.1" data-path="conclusion.html"><a href="conclusion.html#benefits-of-offensive-programming"><i class="fa fa-check"></i><b>13.1</b> Benefits of offensive programming</a></li>
+<li class="chapter" data-level="13.2" data-path="conclusion.html"><a href="conclusion.html#concerns-of-offensive-programming"><i class="fa fa-check"></i><b>13.2</b> Concerns of offensive programming</a></li>
+<li class="chapter" data-level="13.3" data-path="conclusion.html"><a href="conclusion.html#your-feedback-is-welcome"><i class="fa fa-check"></i><b>13.3</b> Your feedback is welcome</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="explicit-lege-feliciter.html"><a href="explicit-lege-feliciter.html"><i class="fa fa-check"></i>Explicit - Lege feliciter</a></li>
+<li class="divider"></li>
+<li><a href="https://www.linkedin.com/in/fabiengelineau" target="blank">instigator Fabien GELINEAU</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Offensive Programming Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="generating-r-documentation" class="section level1">
+<h1><span class="header-section-number"> 11</span> Generating <cite class='it'>R</cite> documentation</h1>
+<p>A good practice of coding is producing related documentation. Easy to say, particularly annoying to achieve.</p>
+<p>Package <cite class='it'>wyz.code.rdoc</cite> aims to ease <cite class='it'>R</cite> documentation generation. Its works whatever the offensive programming instrumentation reached. In particular, under no instrumentation you can still generate <cite class='it'>R</cite> documentation.</p>
+<p>Using <cite class='it'>wyz.code.rdoc</cite>, manual pages <cite class='comment'><cite class='kw'>.Rd</cite> files stored in <cite class='fd'>man</cite> folder in a package context</cite> can be automatically created and filled up nearly to completion, depending on the level of offensive programming instrumentation of your code.</p>
+<p>Generated manual pages uses English language. Feel free to modify produced English, to
+match your own English flavor, if needed.</p>
+<p>The level of your <cite class='it'>R</cite> code instrumentation will impact the quality of the generation and your review work depth and time. When using both function return type instrumentation and test case instrumentation, expects produced manual page content to be fully generated and ready for review.</p>
+<p>When your code is not offensive programming instrumented, documentation generation is still possible. Thanks to customization as code, you may provide your customization to patch generated content.</p>
+<div id="conceptual-approach" class="section level2">
+<h2><span class="header-section-number">11.1</span> Conceptual approach</h2>
+<p>Package <cite class='it'>wyz.code.rdoc</cite> provides an <cite class='it'>API</cite> you can use to generate your manual pages. The approach followed is different from already well known documentation generation approaches, <cite class='it'>utils</cite> and <cite class='it'>roxygen2</cite> approaches. Refer to vignette named <cite class='kw'>tutorial</cite> of <cite class='it'>wyz.code.rdoc</cite> for a detailed explanations of approaches and comparison with <cite class='it'>wyz.code.rdoc</cite>.</p>
+<p>In short, while <cite class='it'>utils</cite> generates a documentation template for you to fill in with your documentation content, <cite class='it'>roxygen2</cite> instruments comments in your code to generate on-demand the documentation by an automated process. In contrary <cite class='it'>wyz.code.rdoc</cite> uses code to generate documentation. The main benefit is that is allows you to customize the result by the code, thus offering a higher degree of freedom, higher reproducibility while saving time.</p>
+</div>
+<div id="vignettes" class="section level2">
+<h2><span class="header-section-number">11.2</span> Vignettes</h2>
+<p>Package <cite class='it'>wyz.code.rdoc</cite> provides a vignette named <cite class='kw'>documentation</cite> that presents all vignettes of this package to grant an easy navigation. Please refer to this vignette and browse <cite class='kw'>tutorial</cite>, <cite class='kw'>use cases</cite>, and <cite class='kw'>tips and tricks</cite> to know more about <cite class='it'>wyz.code.rdoc</cite> functionalities.</p>
+</div>
+<div id="api" class="section level2">
+<h2><span class="header-section-number">11.3</span> <cite class='it'>API</cite></h2>
+<p>Package <cite class='it'>wyz.code.rdoc</cite> allows to generate all kind of manual pages, in particular manual pages for data, functions, and <cite class='it'>R</cite> objects of various types <cite class='kw'>environment, S3, S4, R6, RC</cite>.</p>
+<p>The <cite class='it'>API</cite> allows you to meet the real <cite class='it'>R</cite> specification as described in document <a href="https://cran.r-project.org/doc/manuals/R-exts.html">Writing R extensions</a>, by providing <cite class='it'>R</cite> functions to ease handling of manual pages markup language and of special required constructs.</p>
+<p>You may add missing sections, format presentations, x-ref other manual pages, add URLs, change phraseology and/or content as needed. <cite class='it'>wyz.code.rdoc</cite> provides a convenient and easy way to do so. Let’s see how through some examples.</p>
+</div>
+<div id="best-generation-strategy" class="section level2">
+<h2><span class="header-section-number">11.4</span> Best generation strategy</h2>
+<p>The best manual pages generation strategies are presented below from best to worst</p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="41%" />
+<col width="39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">strategy name</th>
+<th align="left">benefits</th>
+<th align="left">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">full automated generation</td>
+<td align="left">no hand edition, reproducibility, robustness, reusable</td>
+<td align="left">not always applicable. See <a href="generating-r-documentation.html#known-limits">11.7</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">partially automated generation</td>
+<td align="left">hand edition is allowed</td>
+<td align="left">Sometimes the shortest path. Hand modifications may be lost while regenerating content. Constrained reproducibility.</td>
+</tr>
+</tbody>
+</table>
+<p>Stick to full automated generation wherever possible. Also, keep it simple and stupid. It is possible to enter very deep complexity using <cite class='it'>wyz.code.rdoc</cite>, indeed good documentation generally requires good presentation and good wording. The later is generally forgotten and does not depends on any software piece.</p>
+</div>
+<div id="pure-r-function" class="section level2">
+<h2><span class="header-section-number">11.5</span> Pure <cite class='it'>R</cite> function</h2>
+<p>Let’s consider following <cite class='it'>R</cite> function named <cite class='kw'>pure_r</cite>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">library</span>(wyz.code.rdoc)</a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb71-3" data-line-number="3">nop &lt;-<span class="st"> </span><span class="cf">function</span>() {}</a>
+<a class="sourceLine" id="cb71-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb71-5" data-line-number="5">pure_r &lt;-<span class="st"> </span>nop</a>
+<a class="sourceLine" id="cb71-6" data-line-number="6"><span class="kw">formals</span>(pure_r) &lt;-<span class="st"> </span><span class="kw">alist</span>(<span class="dt">x =</span> , <span class="dt">y =</span> <span class="ot">NULL</span>, <span class="dt">z =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>Now, let’s create its documentation as in package <cite class='kw'>my_package</cite>, using <cite class='it'>wyz.code.rdoc</cite>.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">ic &lt;-<span class="st"> </span><span class="kw">InputContext</span>(<span class="dt">object =</span> <span class="ot">NULL</span>, <span class="dt">method =</span> <span class="st">&#39;pure_r&#39;</span>, <span class="dt">package =</span> <span class="st">&#39;my_package&#39;</span>)</a>
+<a class="sourceLine" id="cb72-2" data-line-number="2">pc &lt;-<span class="st"> </span><span class="kw">ProcessingContext</span>(<span class="dt">extraneous =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb72-3" data-line-number="3">  <span class="dt">concept =</span> <span class="st">&#39;my concept&#39;</span>,</a>
+<a class="sourceLine" id="cb72-4" data-line-number="4">  <span class="dt">keyword =</span> <span class="st">&#39;utils&#39;</span></a>
+<a class="sourceLine" id="cb72-5" data-line-number="5">  )</a>
+<a class="sourceLine" id="cb72-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb72-7" data-line-number="7">gc &lt;-<span class="st"> </span><span class="kw">GenerationContext</span>(<span class="dt">verbosity =</span> <span class="ot">TRUE</span>, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb72-8" data-line-number="8">pmp &lt;-<span class="st"> </span><span class="kw">produceManualPage</span>(ic, pc, gc)</a>
+<a class="sourceLine" id="cb72-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb72-10" data-line-number="10"><span class="co">#&gt; ------------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb72-11" data-line-number="11"><span class="co">#&gt; Creating manual page for function pure_r </span></a>
+<a class="sourceLine" id="cb72-12" data-line-number="12"><span class="co">#&gt; standard section multi concept </span></a>
+<a class="sourceLine" id="cb72-13" data-line-number="13"><span class="co">#&gt; standard section multi keyword </span></a>
+<a class="sourceLine" id="cb72-14" data-line-number="14"><span class="co">#&gt; wrote file /tmp/RtmpgMcFnE/pure_r.Rd </span></a>
+<a class="sourceLine" id="cb72-15" data-line-number="15"><span class="co">#&gt; filename is /tmp/RtmpgMcFnE/pure_r.Rd [OVERWRITTEN] </span></a>
+<a class="sourceLine" id="cb72-16" data-line-number="16"><span class="co">#&gt; generated 9 sections: name, alias, title, usage, arguments, author, keyword, concept, encoding </span></a>
+<a class="sourceLine" id="cb72-17" data-line-number="17"><span class="co">#&gt; missing 3 sections: description, value, examples </span></a>
+<a class="sourceLine" id="cb72-18" data-line-number="18"><span class="co">#&gt; probably missing 1 section: details </span></a>
+<a class="sourceLine" id="cb72-19" data-line-number="19"><span class="co">#&gt; replacements to manage: 3 </span></a>
+<a class="sourceLine" id="cb72-20" data-line-number="20"><span class="co">#&gt; </span><span class="al">WARNING</span><span class="co">: File /tmp/RtmpgMcFnE/pure_r.Rd </span></a>
+<a class="sourceLine" id="cb72-21" data-line-number="21"><span class="co">#&gt; checkRd: (5) /tmp/RtmpgMcFnE/pure_r.Rd:0-20: Must have a \description</span></a></code></pre></div>
+<p>First, notice that you passed the function name, not the function itself. Second, notice I set overwrite in order to be able to change file if it exists. Without this option, processing will take place but won’t be saved into the targeted file name.</p>
+<p>The result tells you what happened. By default generation uses folder <cite class='fd'>/tmp</cite>. You may change this by providing setting argument <cite class='bj'>/tmp</cite> of object <cite class='it'>GenerationContext</cite>.</p>
+<p>The provided results is oriented towards good documentation production. As we are documenting a function, sections descriptions, details, values and examples should be present.</p>
+<p>The warning shown comes from standard <cite class='it'>R</cite> documentation verification tool, namely <cite class='it'>tools::checkRd</cite>.
+This tool is use when checking package. You must get rid of errors, warnings and notes if you plan to publish your package.</p>
+<p>Let’s do it.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2">examples &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb73-3" data-line-number="3">  <span class="cf">function</span>() { <span class="kw">pure_r</span>(sum, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) },</a>
+<a class="sourceLine" id="cb73-4" data-line-number="4">  <span class="cf">function</span>() { <span class="kw">pure_r</span>(setenv) }</a>
+<a class="sourceLine" id="cb73-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb73-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb73-7" data-line-number="7">pc &lt;-<span class="st"> </span><span class="kw">ProcessingContext</span>(<span class="dt">extraneous =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb73-8" data-line-number="8">  <span class="dt">description =</span> <span class="st">&#39;tells if an R function is pure or not&#39;</span>,</a>
+<a class="sourceLine" id="cb73-9" data-line-number="9">  <span class="dt">details =</span> <span class="st">&#39;A function is told to be pure if bla bla bla&#39;</span>, </a>
+<a class="sourceLine" id="cb73-10" data-line-number="10">  <span class="dt">value =</span> <span class="st">&#39;A single boolean value&#39;</span>,</a>
+<a class="sourceLine" id="cb73-11" data-line-number="11">  <span class="dt">examples =</span> <span class="kw">convertExamples</span>(examples, <span class="dt">captureOutput =</span> <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb73-12" data-line-number="12">  <span class="dt">concept =</span> <span class="st">&#39;my concept&#39;</span>,</a>
+<a class="sourceLine" id="cb73-13" data-line-number="13">  <span class="dt">keyword =</span> <span class="st">&#39;utils&#39;</span></a>
+<a class="sourceLine" id="cb73-14" data-line-number="14">  )</a>
+<a class="sourceLine" id="cb73-15" data-line-number="15">)</a>
+<a class="sourceLine" id="cb73-16" data-line-number="16">pmp2 &lt;-<span class="st"> </span><span class="kw">produceManualPage</span>(ic, pc, gc)</a>
+<a class="sourceLine" id="cb73-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb73-18" data-line-number="18"><span class="co">#&gt; ------------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb73-19" data-line-number="19"><span class="co">#&gt; Creating manual page for function pure_r </span></a>
+<a class="sourceLine" id="cb73-20" data-line-number="20"><span class="co">#&gt; standard section mono description </span></a>
+<a class="sourceLine" id="cb73-21" data-line-number="21"><span class="co">#&gt; standard section mono details </span></a>
+<a class="sourceLine" id="cb73-22" data-line-number="22"><span class="co">#&gt; standard section mono value </span></a>
+<a class="sourceLine" id="cb73-23" data-line-number="23"><span class="co">#&gt; standard section mono examples </span></a>
+<a class="sourceLine" id="cb73-24" data-line-number="24"><span class="co">#&gt; standard section multi concept </span></a>
+<a class="sourceLine" id="cb73-25" data-line-number="25"><span class="co">#&gt; standard section multi keyword </span></a>
+<a class="sourceLine" id="cb73-26" data-line-number="26"><span class="co">#&gt; wrote file /tmp/RtmpgMcFnE/pure_r.Rd </span></a>
+<a class="sourceLine" id="cb73-27" data-line-number="27"><span class="co">#&gt; filename is /tmp/RtmpgMcFnE/pure_r.Rd [OVERWRITTEN] </span></a>
+<a class="sourceLine" id="cb73-28" data-line-number="28"><span class="co">#&gt; generated 13 sections: name, alias, title, description, usage, arguments, details, value, author, examples, keyword, concept, encoding </span></a>
+<a class="sourceLine" id="cb73-29" data-line-number="29"><span class="co">#&gt; replacements to manage: 6 </span></a>
+<a class="sourceLine" id="cb73-30" data-line-number="30"><span class="co">#&gt; File /tmp/RtmpgMcFnE/pure_r.Rd passes standard documentation checks</span></a></code></pre></div>
+<p>The generated manual page now passed the standard <cite class='it'>R</cite> documentation verification. Let’s have a look to generated file now.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">paste</span>(<span class="kw">readLines</span>(pmp2<span class="op">$</span>context<span class="op">$</span>filename, <span class="dt">warn =</span> <span class="ot">FALSE</span>), <span class="dt">collapse =</span> <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>))</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="co">#&gt; \name{pure_r}</span></a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="co">#&gt; \alias{pure_r}</span></a>
+<a class="sourceLine" id="cb74-4" data-line-number="4"><span class="co">#&gt; \title{Function pure_r}</span></a>
+<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="co">#&gt; \description{</span></a>
+<a class="sourceLine" id="cb74-6" data-line-number="6"><span class="co">#&gt; tells if an R function is pure or not</span></a>
+<a class="sourceLine" id="cb74-7" data-line-number="7"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb74-8" data-line-number="8"><span class="co">#&gt; \usage{</span></a>
+<a class="sourceLine" id="cb74-9" data-line-number="9"><span class="co">#&gt; pure_r(x, y, z = FALSE)</span></a>
+<a class="sourceLine" id="cb74-10" data-line-number="10"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb74-11" data-line-number="11"><span class="co">#&gt; \arguments{</span></a>
+<a class="sourceLine" id="cb74-12" data-line-number="12"><span class="co">#&gt; \item{x}{XXX_004}</span></a>
+<a class="sourceLine" id="cb74-13" data-line-number="13"><span class="co">#&gt; \item{y}{XXX_005}</span></a>
+<a class="sourceLine" id="cb74-14" data-line-number="14"><span class="co">#&gt; \item{z}{XXX_006}</span></a>
+<a class="sourceLine" id="cb74-15" data-line-number="15"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb74-16" data-line-number="16"><span class="co">#&gt; \details{</span></a>
+<a class="sourceLine" id="cb74-17" data-line-number="17"><span class="co">#&gt; A function is told to be pure if bla bla bla</span></a>
+<a class="sourceLine" id="cb74-18" data-line-number="18"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb74-19" data-line-number="19"><span class="co">#&gt; \value{</span></a>
+<a class="sourceLine" id="cb74-20" data-line-number="20"><span class="co">#&gt; A single boolean value</span></a>
+<a class="sourceLine" id="cb74-21" data-line-number="21"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb74-22" data-line-number="22"><span class="co">#&gt; \author{</span></a>
+<a class="sourceLine" id="cb74-23" data-line-number="23"><span class="co">#&gt; \packageAuthor{my_package}</span></a>
+<a class="sourceLine" id="cb74-24" data-line-number="24"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb74-25" data-line-number="25"><span class="co">#&gt; Maintainer: \packageMaintainer{my_package}</span></a>
+<a class="sourceLine" id="cb74-26" data-line-number="26"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb74-27" data-line-number="27"><span class="co">#&gt; \examples{</span></a>
+<a class="sourceLine" id="cb74-28" data-line-number="28"><span class="co">#&gt; # ------- example 1 -------</span></a>
+<a class="sourceLine" id="cb74-29" data-line-number="29"><span class="co">#&gt; pure_r(sum, 1:5) </span></a>
+<a class="sourceLine" id="cb74-30" data-line-number="30"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb74-31" data-line-number="31"><span class="co">#&gt; # ------- example 2 -------</span></a>
+<a class="sourceLine" id="cb74-32" data-line-number="32"><span class="co">#&gt; pure_r(setenv) </span></a>
+<a class="sourceLine" id="cb74-33" data-line-number="33"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb74-34" data-line-number="34"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb74-35" data-line-number="35"><span class="co">#&gt; \keyword{utils}</span></a>
+<a class="sourceLine" id="cb74-36" data-line-number="36"><span class="co">#&gt; \concept{my concept}</span></a>
+<a class="sourceLine" id="cb74-37" data-line-number="37"><span class="co">#&gt; \encoding{UTF-8}</span></a></code></pre></div>
+<p>As you see, some content as been generated with place holders prefixed by <cite class='kw'>XXX</cite>. Although valid from a format point of view, this is meaningless, and should be corrected. You could fix it manually, but you will lose the ability to regenerate the manual page without losing some manual changes already made. Changing it by code keeps evolutivity and regeneration clean. Here is how to fix it, just use post processing.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">pc &lt;-<span class="st"> </span><span class="kw">ProcessingContext</span>(<span class="dt">extraneous =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb75-2" data-line-number="2">  <span class="dt">description =</span> <span class="st">&#39;tells if an R function is pure or not&#39;</span>,</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3">  <span class="dt">details =</span> <span class="st">&#39;A function is told to be pure if bla bla bla&#39;</span>, </a>
+<a class="sourceLine" id="cb75-4" data-line-number="4">  <span class="dt">value =</span> <span class="st">&#39;A single boolean value&#39;</span>,</a>
+<a class="sourceLine" id="cb75-5" data-line-number="5">  <span class="dt">examples =</span> <span class="kw">convertExamples</span>(examples, <span class="dt">captureOutput =</span> <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb75-6" data-line-number="6">  <span class="dt">concept =</span> <span class="st">&#39;my concept&#39;</span>,</a>
+<a class="sourceLine" id="cb75-7" data-line-number="7">  <span class="dt">keyword =</span> <span class="st">&#39;utils&#39;</span></a>
+<a class="sourceLine" id="cb75-8" data-line-number="8">  ),</a>
+<a class="sourceLine" id="cb75-9" data-line-number="9">  <span class="dt">postProcessing =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb75-10" data-line-number="10">    <span class="dt">arguments =</span> <span class="cf">function</span>(content_s) {</a>
+<a class="sourceLine" id="cb75-11" data-line-number="11">      s &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&#39;XXX_007&#39;</span>, <span class="kw">sentensize</span>(<span class="st">&#39;a typical description for variable x&#39;</span>), </a>
+<a class="sourceLine" id="cb75-12" data-line-number="12">               content_s, <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb75-13" data-line-number="13">      s &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&#39;XXX_008&#39;</span>, <span class="kw">sentensize</span>(<span class="st">&#39;a typical description for variable y&#39;</span>), s, <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb75-14" data-line-number="14">      s &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&#39;XXX_009&#39;</span>, </a>
+<a class="sourceLine" id="cb75-15" data-line-number="15">               <span class="kw">sentensize</span>(<span class="st">&#39;a typical description for variable z&#39;</span>),</a>
+<a class="sourceLine" id="cb75-16" data-line-number="16">               s, <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb75-17" data-line-number="17">      s</a>
+<a class="sourceLine" id="cb75-18" data-line-number="18">    }</a>
+<a class="sourceLine" id="cb75-19" data-line-number="19">  )</a>
+<a class="sourceLine" id="cb75-20" data-line-number="20">)</a>
+<a class="sourceLine" id="cb75-21" data-line-number="21">pmp3 &lt;-<span class="st"> </span><span class="kw">produceManualPage</span>(ic, pc, gc)</a>
+<a class="sourceLine" id="cb75-22" data-line-number="22"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb75-23" data-line-number="23"><span class="co">#&gt; ------------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb75-24" data-line-number="24"><span class="co">#&gt; Creating manual page for function pure_r </span></a>
+<a class="sourceLine" id="cb75-25" data-line-number="25"><span class="co">#&gt; standard section mono description </span></a>
+<a class="sourceLine" id="cb75-26" data-line-number="26"><span class="co">#&gt; standard section mono details </span></a>
+<a class="sourceLine" id="cb75-27" data-line-number="27"><span class="co">#&gt; standard section mono value </span></a>
+<a class="sourceLine" id="cb75-28" data-line-number="28"><span class="co">#&gt; standard section mono examples </span></a>
+<a class="sourceLine" id="cb75-29" data-line-number="29"><span class="co">#&gt; standard section multi concept </span></a>
+<a class="sourceLine" id="cb75-30" data-line-number="30"><span class="co">#&gt; standard section multi keyword </span></a>
+<a class="sourceLine" id="cb75-31" data-line-number="31"><span class="co">#&gt; patch arguments </span></a>
+<a class="sourceLine" id="cb75-32" data-line-number="32"><span class="co">#&gt; wrote file /tmp/RtmpgMcFnE/pure_r.Rd </span></a>
+<a class="sourceLine" id="cb75-33" data-line-number="33"><span class="co">#&gt; filename is /tmp/RtmpgMcFnE/pure_r.Rd [OVERWRITTEN] </span></a>
+<a class="sourceLine" id="cb75-34" data-line-number="34"><span class="co">#&gt; generated 13 sections: name, alias, title, description, usage, arguments, details, value, author, examples, keyword, concept, encoding </span></a>
+<a class="sourceLine" id="cb75-35" data-line-number="35"><span class="co">#&gt; patched 1 section: arguments </span></a>
+<a class="sourceLine" id="cb75-36" data-line-number="36"><span class="co">#&gt; replacements to manage: 9 </span></a>
+<a class="sourceLine" id="cb75-37" data-line-number="37"><span class="co">#&gt; File /tmp/RtmpgMcFnE/pure_r.Rd passes standard documentation checks</span></a>
+<a class="sourceLine" id="cb75-38" data-line-number="38"><span class="kw">cat</span>(<span class="kw">paste</span>(<span class="kw">readLines</span>(pmp3<span class="op">$</span>context<span class="op">$</span>filename, <span class="dt">warn =</span> <span class="ot">FALSE</span>), <span class="dt">collapse =</span> <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>))</a>
+<a class="sourceLine" id="cb75-39" data-line-number="39"><span class="co">#&gt; \name{pure_r}</span></a>
+<a class="sourceLine" id="cb75-40" data-line-number="40"><span class="co">#&gt; \alias{pure_r}</span></a>
+<a class="sourceLine" id="cb75-41" data-line-number="41"><span class="co">#&gt; \title{Function pure_r}</span></a>
+<a class="sourceLine" id="cb75-42" data-line-number="42"><span class="co">#&gt; \description{</span></a>
+<a class="sourceLine" id="cb75-43" data-line-number="43"><span class="co">#&gt; tells if an R function is pure or not</span></a>
+<a class="sourceLine" id="cb75-44" data-line-number="44"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb75-45" data-line-number="45"><span class="co">#&gt; \usage{</span></a>
+<a class="sourceLine" id="cb75-46" data-line-number="46"><span class="co">#&gt; pure_r(x, y, z = FALSE)</span></a>
+<a class="sourceLine" id="cb75-47" data-line-number="47"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb75-48" data-line-number="48"><span class="co">#&gt; \arguments{</span></a>
+<a class="sourceLine" id="cb75-49" data-line-number="49"><span class="co">#&gt; \item{x}{A typical description for variable x.}</span></a>
+<a class="sourceLine" id="cb75-50" data-line-number="50"><span class="co">#&gt; \item{y}{A typical description for variable y.}</span></a>
+<a class="sourceLine" id="cb75-51" data-line-number="51"><span class="co">#&gt; \item{z}{A typical description for variable z.}</span></a>
+<a class="sourceLine" id="cb75-52" data-line-number="52"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb75-53" data-line-number="53"><span class="co">#&gt; \details{</span></a>
+<a class="sourceLine" id="cb75-54" data-line-number="54"><span class="co">#&gt; A function is told to be pure if bla bla bla</span></a>
+<a class="sourceLine" id="cb75-55" data-line-number="55"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb75-56" data-line-number="56"><span class="co">#&gt; \value{</span></a>
+<a class="sourceLine" id="cb75-57" data-line-number="57"><span class="co">#&gt; A single boolean value</span></a>
+<a class="sourceLine" id="cb75-58" data-line-number="58"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb75-59" data-line-number="59"><span class="co">#&gt; \author{</span></a>
+<a class="sourceLine" id="cb75-60" data-line-number="60"><span class="co">#&gt; \packageAuthor{my_package}</span></a>
+<a class="sourceLine" id="cb75-61" data-line-number="61"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb75-62" data-line-number="62"><span class="co">#&gt; Maintainer: \packageMaintainer{my_package}</span></a>
+<a class="sourceLine" id="cb75-63" data-line-number="63"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb75-64" data-line-number="64"><span class="co">#&gt; \examples{</span></a>
+<a class="sourceLine" id="cb75-65" data-line-number="65"><span class="co">#&gt; # ------- example 1 -------</span></a>
+<a class="sourceLine" id="cb75-66" data-line-number="66"><span class="co">#&gt; pure_r(sum, 1:5) </span></a>
+<a class="sourceLine" id="cb75-67" data-line-number="67"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb75-68" data-line-number="68"><span class="co">#&gt; # ------- example 2 -------</span></a>
+<a class="sourceLine" id="cb75-69" data-line-number="69"><span class="co">#&gt; pure_r(setenv) </span></a>
+<a class="sourceLine" id="cb75-70" data-line-number="70"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb75-71" data-line-number="71"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb75-72" data-line-number="72"><span class="co">#&gt; \keyword{utils}</span></a>
+<a class="sourceLine" id="cb75-73" data-line-number="73"><span class="co">#&gt; \concept{my concept}</span></a>
+<a class="sourceLine" id="cb75-74" data-line-number="74"><span class="co">#&gt; \encoding{UTF-8}</span></a></code></pre></div>
+<p>Note that I had to infer variable names for next generation, not just had to use previous ones!
+Now, generated manual pages looks acceptable, from a content and format point of view.</p>
+<p>From documentation quality point of view, understand-ability is insufficient according to me, due to genericity of phraseology. Use specific terminology to make things crystal clear and easy to understand for most of your readers.</p>
+<p>Now that you understood the global pattern, you may use immediately a pattern like the one used for the final case above, to get in one single shot a manual page from an <cite class='it'>R</cite> function.</p>
+</div>
+<div id="offensive-programming-r-function" class="section level2">
+<h2><span class="header-section-number">11.6</span> Offensive programming <cite class='it'>R</cite> function</h2>
+<p>Using an offensive programming instrumented function eases processing in comparison to previous case. Let’s see how</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">op_r &lt;-<span class="st"> </span>nop</a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw">formals</span>(op_r) &lt;-<span class="st"> </span><span class="kw">alist</span>(<span class="dt">functionName_f_1 =</span> , <span class="dt">functionArguments_l =</span> <span class="ot">NULL</span>, <span class="dt">verbosityFlag_b_1 =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>Now, let’s create its documentation as in package <cite class='kw'>my_package</cite>, using <cite class='it'>wyz.code.rdoc</cite>.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">examples &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb77-2" data-line-number="2">  <span class="cf">function</span>() { <span class="kw">op_r</span>(sum, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) },</a>
+<a class="sourceLine" id="cb77-3" data-line-number="3">  <span class="cf">function</span>() { <span class="kw">op_r</span>(setenv) }</a>
+<a class="sourceLine" id="cb77-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb77-5" data-line-number="5">ic &lt;-<span class="st"> </span><span class="kw">InputContext</span>(<span class="dt">object =</span> <span class="ot">NULL</span>, <span class="dt">method =</span> <span class="st">&#39;op_r&#39;</span>, <span class="dt">package =</span> <span class="st">&#39;my_package&#39;</span>)</a>
+<a class="sourceLine" id="cb77-6" data-line-number="6">pc &lt;-<span class="st"> </span><span class="kw">ProcessingContext</span>(<span class="dt">extraneous =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb77-7" data-line-number="7">  <span class="dt">description =</span> <span class="st">&#39;tells if an R function is pure or not&#39;</span>,</a>
+<a class="sourceLine" id="cb77-8" data-line-number="8">  <span class="dt">details =</span> <span class="st">&#39;A function is told to be pure if bla bla bla&#39;</span>, </a>
+<a class="sourceLine" id="cb77-9" data-line-number="9">  <span class="dt">value =</span> <span class="st">&#39;A single boolean value&#39;</span>,</a>
+<a class="sourceLine" id="cb77-10" data-line-number="10">  <span class="dt">examples =</span> <span class="kw">convertExamples</span>(examples, <span class="dt">captureOutput =</span> <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb77-11" data-line-number="11">  <span class="dt">concept =</span> <span class="st">&#39;my concept&#39;</span>,</a>
+<a class="sourceLine" id="cb77-12" data-line-number="12">  <span class="dt">keyword =</span> <span class="st">&#39;utils&#39;</span></a>
+<a class="sourceLine" id="cb77-13" data-line-number="13">  )</a>
+<a class="sourceLine" id="cb77-14" data-line-number="14">)</a>
+<a class="sourceLine" id="cb77-15" data-line-number="15">gc &lt;-<span class="st"> </span><span class="kw">GenerationContext</span>(<span class="dt">verbosity =</span> <span class="ot">TRUE</span>, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb77-16" data-line-number="16">omp &lt;-<span class="st"> </span><span class="kw">produceManualPage</span>(ic, pc, gc)</a>
+<a class="sourceLine" id="cb77-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb77-18" data-line-number="18"><span class="co">#&gt; ------------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb77-19" data-line-number="19"><span class="co">#&gt; Creating manual page for function op_r </span></a>
+<a class="sourceLine" id="cb77-20" data-line-number="20"><span class="co">#&gt; standard section mono description </span></a>
+<a class="sourceLine" id="cb77-21" data-line-number="21"><span class="co">#&gt; standard section mono details </span></a>
+<a class="sourceLine" id="cb77-22" data-line-number="22"><span class="co">#&gt; standard section mono value </span></a>
+<a class="sourceLine" id="cb77-23" data-line-number="23"><span class="co">#&gt; standard section mono examples </span></a>
+<a class="sourceLine" id="cb77-24" data-line-number="24"><span class="co">#&gt; standard section multi concept </span></a>
+<a class="sourceLine" id="cb77-25" data-line-number="25"><span class="co">#&gt; standard section multi keyword </span></a>
+<a class="sourceLine" id="cb77-26" data-line-number="26"><span class="co">#&gt; wrote file /tmp/RtmpgMcFnE/op_r.Rd </span></a>
+<a class="sourceLine" id="cb77-27" data-line-number="27"><span class="co">#&gt; filename is /tmp/RtmpgMcFnE/op_r.Rd [OVERWRITTEN] </span></a>
+<a class="sourceLine" id="cb77-28" data-line-number="28"><span class="co">#&gt; generated 13 sections: name, alias, title, description, usage, arguments, details, value, author, examples, keyword, concept, encoding </span></a>
+<a class="sourceLine" id="cb77-29" data-line-number="29"><span class="co">#&gt; File /tmp/RtmpgMcFnE/op_r.Rd passes standard documentation checks</span></a>
+<a class="sourceLine" id="cb77-30" data-line-number="30"><span class="kw">cat</span>(<span class="kw">paste</span>(<span class="kw">readLines</span>(omp<span class="op">$</span>context<span class="op">$</span>filename, <span class="dt">warn =</span> <span class="ot">FALSE</span>), <span class="dt">collapse =</span> <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>))</a>
+<a class="sourceLine" id="cb77-31" data-line-number="31"><span class="co">#&gt; \name{op_r}</span></a>
+<a class="sourceLine" id="cb77-32" data-line-number="32"><span class="co">#&gt; \alias{op_r}</span></a>
+<a class="sourceLine" id="cb77-33" data-line-number="33"><span class="co">#&gt; \title{Function op_r}</span></a>
+<a class="sourceLine" id="cb77-34" data-line-number="34"><span class="co">#&gt; \description{</span></a>
+<a class="sourceLine" id="cb77-35" data-line-number="35"><span class="co">#&gt; tells if an R function is pure or not</span></a>
+<a class="sourceLine" id="cb77-36" data-line-number="36"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb77-37" data-line-number="37"><span class="co">#&gt; \usage{</span></a>
+<a class="sourceLine" id="cb77-38" data-line-number="38"><span class="co">#&gt; op_r(functionName_f_1, functionArguments_l, verbosityFlag_b_1 = FALSE)</span></a>
+<a class="sourceLine" id="cb77-39" data-line-number="39"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb77-40" data-line-number="40"><span class="co">#&gt; \arguments{</span></a>
+<a class="sourceLine" id="cb77-41" data-line-number="41"><span class="co">#&gt; \item{functionName_f_1}{A single function value}</span></a>
+<a class="sourceLine" id="cb77-42" data-line-number="42"><span class="co">#&gt; \item{functionArguments_l}{An unconstrained list}</span></a>
+<a class="sourceLine" id="cb77-43" data-line-number="43"><span class="co">#&gt; \item{verbosityFlag_b_1}{A single boolean value}</span></a>
+<a class="sourceLine" id="cb77-44" data-line-number="44"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb77-45" data-line-number="45"><span class="co">#&gt; \details{</span></a>
+<a class="sourceLine" id="cb77-46" data-line-number="46"><span class="co">#&gt; A function is told to be pure if bla bla bla</span></a>
+<a class="sourceLine" id="cb77-47" data-line-number="47"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb77-48" data-line-number="48"><span class="co">#&gt; \value{</span></a>
+<a class="sourceLine" id="cb77-49" data-line-number="49"><span class="co">#&gt; A single boolean value</span></a>
+<a class="sourceLine" id="cb77-50" data-line-number="50"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb77-51" data-line-number="51"><span class="co">#&gt; \author{</span></a>
+<a class="sourceLine" id="cb77-52" data-line-number="52"><span class="co">#&gt; \packageAuthor{my_package}</span></a>
+<a class="sourceLine" id="cb77-53" data-line-number="53"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb77-54" data-line-number="54"><span class="co">#&gt; Maintainer: \packageMaintainer{my_package}</span></a>
+<a class="sourceLine" id="cb77-55" data-line-number="55"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb77-56" data-line-number="56"><span class="co">#&gt; \examples{</span></a>
+<a class="sourceLine" id="cb77-57" data-line-number="57"><span class="co">#&gt; # ------- example 1 -------</span></a>
+<a class="sourceLine" id="cb77-58" data-line-number="58"><span class="co">#&gt; op_r(sum, 1:5) </span></a>
+<a class="sourceLine" id="cb77-59" data-line-number="59"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb77-60" data-line-number="60"><span class="co">#&gt; # ------- example 2 -------</span></a>
+<a class="sourceLine" id="cb77-61" data-line-number="61"><span class="co">#&gt; op_r(setenv) </span></a>
+<a class="sourceLine" id="cb77-62" data-line-number="62"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb77-63" data-line-number="63"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb77-64" data-line-number="64"><span class="co">#&gt; \keyword{utils}</span></a>
+<a class="sourceLine" id="cb77-65" data-line-number="65"><span class="co">#&gt; \concept{my concept}</span></a>
+<a class="sourceLine" id="cb77-66" data-line-number="66"><span class="co">#&gt; \encoding{UTF-8}</span></a></code></pre></div>
+<p>As you can see, no more need to qualify arguments. Semantic naming is used to generate the content.
+If generated content does not match perfectly your need, you can still apply post processing in a somewhat similar or dissimilar way.</p>
+<p>For convenience, just know that you can easily generate argument section content using following approach</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">fields =</span> letters[<span class="dv">24</span><span class="op">:</span><span class="dv">26</span>], </a>
+<a class="sourceLine" id="cb78-2" data-line-number="2">                 <span class="dt">description =</span> <span class="kw">paste</span>(<span class="st">&#39;a typical description for variable&#39;</span>, </a>
+<a class="sourceLine" id="cb78-3" data-line-number="3">                                     letters[<span class="dv">24</span><span class="op">:</span><span class="dv">26</span>]))</a>
+<a class="sourceLine" id="cb78-4" data-line-number="4"><span class="kw">sapply</span>(<span class="kw">seq_len</span>(<span class="kw">nrow</span>(dt)), <span class="cf">function</span>(k) {</a>
+<a class="sourceLine" id="cb78-5" data-line-number="5">  <span class="kw">generateMarkup</span>(dt[k]<span class="op">$</span>fields, <span class="st">&#39;item&#39;</span>, dt[k]<span class="op">$</span>description)</a>
+<a class="sourceLine" id="cb78-6" data-line-number="6">})</a>
+<a class="sourceLine" id="cb78-7" data-line-number="7"><span class="co">#&gt; [1] &quot;\\item{x}{a typical description for variable x}&quot;</span></a>
+<a class="sourceLine" id="cb78-8" data-line-number="8"><span class="co">#&gt; [2] &quot;\\item{y}{a typical description for variable y}&quot;</span></a>
+<a class="sourceLine" id="cb78-9" data-line-number="9"><span class="co">#&gt; [3] &quot;\\item{z}{a typical description for variable z}&quot;</span></a></code></pre></div>
+<p>Using such approach allows you to replace purely the content using a post processing scheme.</p>
+</div>
+<div id="known-limits" class="section level2">
+<h2><span class="header-section-number">11.7</span> Known limits</h2>
+<p>Generation of manual pages can be quite tricky. Whereas package <cite class='it'>wyz.code.rdoc</cite>
+alleviates greatly the burden, some pitfalls remain. Here they are</p>
+<ol style="list-style-type: decimal">
+<li>Generated manual page might not respect the maximum line length required by <strong>R CMD check</strong>, and this tool will provide explicit information about noncompliance. To solve issue, just split the content by adding carriage return wherever required.</li>
+<li>Generated documentation is quite stereotyped. Inject your instructions to customize
+the result.</li>
+</ol>
+</div>
+<div id="opportunities" class="section level2">
+<h2><span class="header-section-number">11.8</span> Opportunities</h2>
+<p>Reuse can be made at several levels depending of your needs. Roughly speaking, you may aim for one of these 3 levels of customization</p>
+<ol style="list-style-type: decimal">
+<li>just customize some textual information. Generate the pages using package <cite class='it'>wyz.code.rdoc</cite> and modify page contents manually is generally the best way to achieve this goal</li>
+<li>customize some manual pages sections. Generate the pages using package <cite class='it'>wyz.code.rdoc</cite> while providing some dedicated context information. Refer to previous examples, and look at variables starting with <cite class='kw'>extraneous</cite>. They allow you to inject your customized content in targeted sections.</li>
+<li>If you seek for fully customized manual page generation, then you may use package (ref:rd) to create your own <cite class='it'>R</cite> generation scheme. That way you will get the benefit of starting launched, using high-level <cite class='it'>R</cite> documentation generation functions, and also get the ability to reuse and customized provided generation scheme. This package uses only <cite class='it'>R</cite> code, and so you could get insight and reuse any part of it.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="meta-testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="implementation-figures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "night",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

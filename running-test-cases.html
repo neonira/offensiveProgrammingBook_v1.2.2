@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 8 Running test cases | Offensive Programming Book</title>
+  <meta name="description" content="wyz.code.offensiveProgramming package related documentation" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 8 Running test cases | Offensive Programming Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="figures/op.png" />
+  <meta property="og:description" content="wyz.code.offensiveProgramming package related documentation" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 8 Running test cases | Offensive Programming Book" />
+  
+  <meta name="twitter:description" content="wyz.code.offensiveProgramming package related documentation" />
+  <meta name="twitter:image" content="figures/op.png" />
+
+<meta name="author" content="Fabien GELINEAU neonira@gmail.com" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="running-functions.html"/>
+<link rel="next" href="generating-testthat-test-files.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Offensive Programming Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#book-version"><i class="fa fa-check"></i>Book version</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#book-production"><i class="fa fa-check"></i>Book production</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preamble.html"><a href="preamble.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="1" data-path="programming-styles.html"><a href="programming-styles.html"><i class="fa fa-check"></i><b>1</b> Programming styles</a><ul>
+<li class="chapter" data-level="1.1" data-path="programming-styles.html"><a href="programming-styles.html#defensive-programming-style"><i class="fa fa-check"></i><b>1.1</b> Defensive programming style</a></li>
+<li class="chapter" data-level="1.2" data-path="programming-styles.html"><a href="programming-styles.html#offensive-programming-style"><i class="fa fa-check"></i><b>1.2</b> Offensive programming style</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="application-in-r-language.html"><a href="application-in-r-language.html"><i class="fa fa-check"></i><b>2</b> Application in R language</a><ul>
+<li class="chapter" data-level="2.1" data-path="application-in-r-language.html"><a href="application-in-r-language.html#a-simple-case"><i class="fa fa-check"></i><b>2.1</b> A simple case</a></li>
+<li class="chapter" data-level="2.2" data-path="application-in-r-language.html"><a href="application-in-r-language.html#defensive-programming"><i class="fa fa-check"></i><b>2.2</b> Defensive programming</a></li>
+<li class="chapter" data-level="2.3" data-path="application-in-r-language.html"><a href="application-in-r-language.html#offensive-programming"><i class="fa fa-check"></i><b>2.3</b> Offensive programming</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="application-in-r-language.html"><a href="application-in-r-language.html#what-are-the-differences"><i class="fa fa-check"></i><b>2.3.1</b> What are the differences?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="application-in-r-language.html"><a href="application-in-r-language.html#semantic-argument-naming"><i class="fa fa-check"></i><b>2.3.2</b> Semantic argument naming</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="application-in-r-language.html"><a href="application-in-r-language.html#back-to-definition"><i class="fa fa-check"></i><b>2.4</b> Back to definition</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="activating-offensive-programming.html"><a href="activating-offensive-programming.html"><i class="fa fa-check"></i><b>3</b> Activating offensive programming</a><ul>
+<li class="chapter" data-level="3.1" data-path="activating-offensive-programming.html"><a href="activating-offensive-programming.html#package-discovery"><i class="fa fa-check"></i><b>3.1</b> Package discovery</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-type-factory.html"><a href="the-type-factory.html"><i class="fa fa-check"></i><b>4</b> The type factory</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-type-factory.html"><a href="the-type-factory.html#get-recorded-types-inventory"><i class="fa fa-check"></i><b>4.1</b> Get recorded types inventory</a></li>
+<li class="chapter" data-level="4.2" data-path="the-type-factory.html"><a href="the-type-factory.html#understanding-the-model"><i class="fa fa-check"></i><b>4.2</b> Understanding the model</a></li>
+<li class="chapter" data-level="4.3" data-path="the-type-factory.html"><a href="the-type-factory.html#register-your-own-type"><i class="fa fa-check"></i><b>4.3</b> Register your own type</a></li>
+<li class="chapter" data-level="4.4" data-path="the-type-factory.html"><a href="the-type-factory.html#get-access-to-verification-functions"><i class="fa fa-check"></i><b>4.4</b> Get access to verification functions</a></li>
+<li class="chapter" data-level="4.5" data-path="the-type-factory.html"><a href="the-type-factory.html#some-hints"><i class="fa fa-check"></i><b>4.5</b> Some hints</a></li>
+<li class="chapter" data-level="4.6" data-path="the-type-factory.html"><a href="the-type-factory.html#enforcing-use-of-your-own-type-factory"><i class="fa fa-check"></i><b>4.6</b> Enforcing use of your own type factory</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="semantic-names.html"><a href="semantic-names.html"><i class="fa fa-check"></i><b>5</b> Semantic names</a><ul>
+<li class="chapter" data-level="5.1" data-path="semantic-names.html"><a href="semantic-names.html#what-is-semantic-naming"><i class="fa fa-check"></i><b>5.1</b> What is semantic naming?</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="semantic-names.html"><a href="semantic-names.html#naming-recommendation"><i class="fa fa-check"></i><b>5.1.1</b> Naming recommendation</a></li>
+<li class="chapter" data-level="5.1.2" data-path="semantic-names.html"><a href="semantic-names.html#semantic-naming"><i class="fa fa-check"></i><b>5.1.2</b> Semantic naming</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="semantic-names.html"><a href="semantic-names.html#verifying-names"><i class="fa fa-check"></i><b>5.2</b> Verifying names</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="semantic-names.html"><a href="semantic-names.html#verifying-a-function-parameter-or-return-type-declaration"><i class="fa fa-check"></i><b>5.2.1</b> Verifying a function parameter or return type declaration</a></li>
+<li class="chapter" data-level="5.2.2" data-path="semantic-names.html"><a href="semantic-names.html#verifying-a-class-name"><i class="fa fa-check"></i><b>5.2.2</b> Verifying a class name</a></li>
+<li class="chapter" data-level="5.2.3" data-path="semantic-names.html"><a href="semantic-names.html#verifying-a-function-name"><i class="fa fa-check"></i><b>5.2.3</b> Verifying a function name</a></li>
+<li class="chapter" data-level="5.2.4" data-path="semantic-names.html"><a href="semantic-names.html#get-naming-balance-from-an-r-object"><i class="fa fa-check"></i><b>5.2.4</b> Get naming balance from an R object</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="evaluation-modes.html"><a href="evaluation-modes.html"><i class="fa fa-check"></i><b>6</b> Evaluation modes</a><ul>
+<li class="chapter" data-level="6.1" data-path="evaluation-modes.html"><a href="evaluation-modes.html#understanding-evaluation-modes"><i class="fa fa-check"></i><b>6.1</b> Understanding evaluation modes</a></li>
+<li class="chapter" data-level="6.2" data-path="evaluation-modes.html"><a href="evaluation-modes.html#instantiating-evaluation-mode"><i class="fa fa-check"></i><b>6.2</b> Instantiating evaluation mode</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="running-functions.html"><a href="running-functions.html"><i class="fa fa-check"></i><b>7</b> Running functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="running-functions.html"><a href="running-functions.html#prerequisites"><i class="fa fa-check"></i><b>7.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="7.2" data-path="running-functions.html"><a href="running-functions.html#transient-invocations"><i class="fa fa-check"></i><b>7.2</b> Transient invocations</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="running-functions.html"><a href="running-functions.html#nominal-case"><i class="fa fa-check"></i><b>7.2.1</b> Nominal case</a></li>
+<li class="chapter" data-level="7.2.2" data-path="running-functions.html"><a href="running-functions.html#prerequisite-mismatch"><i class="fa fa-check"></i><b>7.2.2</b> Prerequisite mismatch</a></li>
+<li class="chapter" data-level="7.2.3" data-path="running-functions.html"><a href="running-functions.html#object-function-call"><i class="fa fa-check"></i><b>7.2.3</b> Object function call</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="running-functions.html"><a href="running-functions.html#persistent-invocations"><i class="fa fa-check"></i><b>7.3</b> Persistent invocations</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="running-functions.html"><a href="running-functions.html#verifying-recorded-information"><i class="fa fa-check"></i><b>7.3.1</b> Verifying recorded information</a></li>
+<li class="chapter" data-level="7.3.2" data-path="running-functions.html"><a href="running-functions.html#nominal-persistent-case"><i class="fa fa-check"></i><b>7.3.2</b> Nominal persistent case</a></li>
+<li class="chapter" data-level="7.3.3" data-path="running-functions.html"><a href="running-functions.html#subtile-change"><i class="fa fa-check"></i><b>7.3.3</b> Subtile change</a></li>
+<li class="chapter" data-level="7.3.4" data-path="running-functions.html"><a href="running-functions.html#call-case-with-named-and-positional-parameters"><i class="fa fa-check"></i><b>7.3.4</b> Call case with named and positional parameters</a></li>
+<li class="chapter" data-level="7.3.5" data-path="running-functions.html"><a href="running-functions.html#call-case-with-ellipsis"><i class="fa fa-check"></i><b>7.3.5</b> Call case with ellipsis</a></li>
+<li class="chapter" data-level="7.3.6" data-path="running-functions.html"><a href="running-functions.html#second-call-case-with-ellipsis"><i class="fa fa-check"></i><b>7.3.6</b> Second call case with ellipsis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="running-test-cases.html"><a href="running-test-cases.html"><i class="fa fa-check"></i><b>8</b> Running test cases</a><ul>
+<li class="chapter" data-level="8.1" data-path="running-test-cases.html"><a href="running-test-cases.html#embedding-test-cases"><i class="fa fa-check"></i><b>8.1</b> Embedding test cases</a></li>
+<li class="chapter" data-level="8.2" data-path="running-test-cases.html"><a href="running-test-cases.html#discovering-test-cases"><i class="fa fa-check"></i><b>8.2</b> Discovering test cases</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="running-test-cases.html"><a href="running-test-cases.html#test-case-verifications"><i class="fa fa-check"></i><b>8.2.1</b> Test case verifications</a></li>
+<li class="chapter" data-level="8.2.2" data-path="running-test-cases.html"><a href="running-test-cases.html#getting-instrumented-functions"><i class="fa fa-check"></i><b>8.2.2</b> Getting instrumented functions</a></li>
+<li class="chapter" data-level="8.2.3" data-path="running-test-cases.html"><a href="running-test-cases.html#getting-test-cases-descriptions"><i class="fa fa-check"></i><b>8.2.3</b> Getting test cases descriptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="running-test-cases.html"><a href="running-test-cases.html#running-test-cases-1"><i class="fa fa-check"></i><b>8.3</b> Running test cases</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="running-test-cases.html"><a href="running-test-cases.html#run-a-single-test-case"><i class="fa fa-check"></i><b>8.3.1</b> Run a single test case</a></li>
+<li class="chapter" data-level="8.3.2" data-path="running-test-cases.html"><a href="running-test-cases.html#run-several-test-cases"><i class="fa fa-check"></i><b>8.3.2</b> Run several test cases</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html"><i class="fa fa-check"></i><b>9</b> Generating <cite class='it'>testthat</cite> test files</a><ul>
+<li class="chapter" data-level="9.1" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#package-wyz.code.testthat-in-action"><i class="fa fa-check"></i><b>9.1</b> Package <cite class='it'>wyz.code.testthat</cite> in action</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#setting-up-the-context"><i class="fa fa-check"></i><b>9.1.1</b> Setting up the context</a></li>
+<li class="chapter" data-level="9.1.2" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#loading-objects"><i class="fa fa-check"></i><b>9.1.2</b> Loading objects</a></li>
+<li class="chapter" data-level="9.1.3" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#unit-test-file-generation"><i class="fa fa-check"></i><b>9.1.3</b> Unit test file generation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#generated-unit-test-file-content"><i class="fa fa-check"></i><b>9.2</b> Generated unit test file content</a></li>
+<li class="chapter" data-level="9.3" data-path="generating-testthat-test-files.html"><a href="generating-testthat-test-files.html#caveats"><i class="fa fa-check"></i><b>9.3</b> Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="meta-testing.html"><a href="meta-testing.html"><i class="fa fa-check"></i><b>10</b> Meta-testing</a><ul>
+<li class="chapter" data-level="10.1" data-path="meta-testing.html"><a href="meta-testing.html#traditional-way-of-testing"><i class="fa fa-check"></i><b>10.1</b> Traditional way of testing</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="meta-testing.html"><a href="meta-testing.html#empirical-approach"><i class="fa fa-check"></i><b>10.1.1</b> Empirical approach</a></li>
+<li class="chapter" data-level="10.1.2" data-path="meta-testing.html"><a href="meta-testing.html#more-industrial-approach"><i class="fa fa-check"></i><b>10.1.2</b> More industrial approach</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="meta-testing.html"><a href="meta-testing.html#meta-testing-1"><i class="fa fa-check"></i><b>10.2</b> Meta testing</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="meta-testing.html"><a href="meta-testing.html#meta-testing-approach"><i class="fa fa-check"></i><b>10.2.1</b> Meta testing approach</a></li>
+<li class="chapter" data-level="10.2.2" data-path="meta-testing.html"><a href="meta-testing.html#create-a-wrapper-function"><i class="fa fa-check"></i><b>10.2.2</b> Create a wrapper function</a></li>
+<li class="chapter" data-level="10.2.3" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge"><i class="fa fa-check"></i><b>10.2.3</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.2.4" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests"><i class="fa fa-check"></i><b>10.2.4</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="meta-testing.html"><a href="meta-testing.html#a-more-complex-example"><i class="fa fa-check"></i><b>10.3</b> A more complex example</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="meta-testing.html"><a href="meta-testing.html#create-a-wrapper-function-1"><i class="fa fa-check"></i><b>10.3.1</b> Create a wrapper function</a></li>
+<li class="chapter" data-level="10.3.2" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge-1"><i class="fa fa-check"></i><b>10.3.2</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.3.3" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests-1"><i class="fa fa-check"></i><b>10.3.3</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="meta-testing.html"><a href="meta-testing.html#an-example-using-ellipsis"><i class="fa fa-check"></i><b>10.4</b> An example using ellipsis</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="meta-testing.html"><a href="meta-testing.html#create-a-wrapper-function-2"><i class="fa fa-check"></i><b>10.4.1</b> Create a wrapper function</a></li>
+<li class="chapter" data-level="10.4.2" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge-2"><i class="fa fa-check"></i><b>10.4.2</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.4.3" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests-2"><i class="fa fa-check"></i><b>10.4.3</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="meta-testing.html"><a href="meta-testing.html#a-tricky-example"><i class="fa fa-check"></i><b>10.5</b> A tricky example</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="meta-testing.html"><a href="meta-testing.html#create-wrapper-function"><i class="fa fa-check"></i><b>10.5.1</b> Create wrapper function</a></li>
+<li class="chapter" data-level="10.5.2" data-path="meta-testing.html"><a href="meta-testing.html#getting-some-complexity-knowledge-3"><i class="fa fa-check"></i><b>10.5.2</b> Getting some complexity knowledge</a></li>
+<li class="chapter" data-level="10.5.3" data-path="meta-testing.html"><a href="meta-testing.html#firing-massive-tests-3"><i class="fa fa-check"></i><b>10.5.3</b> Firing massive tests</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="meta-testing.html"><a href="meta-testing.html#pitfalls-to-avoid"><i class="fa fa-check"></i><b>10.6</b> Pitfalls to avoid</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html"><i class="fa fa-check"></i><b>11</b> Generating <cite class='it'>R</cite> documentation</a><ul>
+<li class="chapter" data-level="11.1" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#conceptual-approach"><i class="fa fa-check"></i><b>11.1</b> Conceptual approach</a></li>
+<li class="chapter" data-level="11.2" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#vignettes"><i class="fa fa-check"></i><b>11.2</b> Vignettes</a></li>
+<li class="chapter" data-level="11.3" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#api"><i class="fa fa-check"></i><b>11.3</b> <cite class='it'>API</cite></a></li>
+<li class="chapter" data-level="11.4" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#best-generation-strategy"><i class="fa fa-check"></i><b>11.4</b> Best generation strategy</a></li>
+<li class="chapter" data-level="11.5" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#pure-r-function"><i class="fa fa-check"></i><b>11.5</b> Pure <cite class='it'>R</cite> function</a></li>
+<li class="chapter" data-level="11.6" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#offensive-programming-r-function"><i class="fa fa-check"></i><b>11.6</b> Offensive programming <cite class='it'>R</cite> function</a></li>
+<li class="chapter" data-level="11.7" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#known-limits"><i class="fa fa-check"></i><b>11.7</b> Known limits</a></li>
+<li class="chapter" data-level="11.8" data-path="generating-r-documentation.html"><a href="generating-r-documentation.html#opportunities"><i class="fa fa-check"></i><b>11.8</b> Opportunities</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="implementation-figures.html"><a href="implementation-figures.html"><i class="fa fa-check"></i><b>12</b> Implementation figures</a><ul>
+<li class="chapter" data-level="12.1" data-path="implementation-figures.html"><a href="implementation-figures.html#file-statistics"><i class="fa fa-check"></i><b>12.1</b> File statistics</a></li>
+<li class="chapter" data-level="12.2" data-path="implementation-figures.html"><a href="implementation-figures.html#code-statistics"><i class="fa fa-check"></i><b>12.2</b> Code statistics</a></li>
+<li class="chapter" data-level="12.3" data-path="implementation-figures.html"><a href="implementation-figures.html#tests-and-coverage"><i class="fa fa-check"></i><b>12.3</b> Tests and coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>13</b> Conclusion</a><ul>
+<li class="chapter" data-level="13.1" data-path="conclusion.html"><a href="conclusion.html#benefits-of-offensive-programming"><i class="fa fa-check"></i><b>13.1</b> Benefits of offensive programming</a></li>
+<li class="chapter" data-level="13.2" data-path="conclusion.html"><a href="conclusion.html#concerns-of-offensive-programming"><i class="fa fa-check"></i><b>13.2</b> Concerns of offensive programming</a></li>
+<li class="chapter" data-level="13.3" data-path="conclusion.html"><a href="conclusion.html#your-feedback-is-welcome"><i class="fa fa-check"></i><b>13.3</b> Your feedback is welcome</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="explicit-lege-feliciter.html"><a href="explicit-lege-feliciter.html"><i class="fa fa-check"></i>Explicit - Lege feliciter</a></li>
+<li class="divider"></li>
+<li><a href="https://www.linkedin.com/in/fabiengelineau" target="blank">instigator Fabien GELINEAU</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Offensive Programming Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="running-test-cases" class="section level1">
+<h1><span class="header-section-number"> 8</span> Running test cases</h1>
+<p>Using package <cite class='it'>wyz.code.offensiveProgramming</cite>, you have the opportunity to define test cases and to embed them
+in your class definition, to ease retrieval and reuse.</p>
+<p>Doing so, allows to get following benefits</p>
+<ol style="list-style-type: decimal">
+<li>discover defined test case definitions</li>
+<li>run of any test case definition</li>
+<li>get interactively the <cite class='it'>R</cite> code of a test case, allowing you to play with it, manually, when needed</li>
+<li>get contextual results from the test case runs</li>
+</ol>
+<div id="embedding-test-cases" class="section level2">
+<h2><span class="header-section-number">8.1</span> Embedding test cases</h2>
+<p>Embedding test cases in class definition is accomplished by declaring a variable named <cite class='kw'>testCaseDefinitions</cite>,
+and providing its content, that is a <a href="https://CRAN.R-project.org/package=data.table">data.table</a>. Content could be partial or complete depending of your goals. Spectrum of provided tests cases is as you desire it to be, as shallow or deep as needed.</p>
+<p>The <cite class='kw'>data.table</cite> must hold following columns and content</p>
+<ol style="list-style-type: decimal">
+<li><cite class='bj'>function_name</cite>, a vector of strings, each being the name of the function to test,</li>
+<li><cite class='bj'>standard_evaluation</cite>, a vector of strings, where values are taken from set {‘correct’, ‘erroneous’, ‘failure’}</li>
+<li><cite class='bj'>type_checking_enforcement</cite>, a vector of strings, where values are taken from set {‘correct’, ‘erroneous’, ‘failure’}</li>
+<li><cite class='bj'>test case definitions</cite>, that is a list of <cite class='kw'>TestCaseDefinition</cite> objects.</li>
+</ol>
+<p>Correct implies right type and right result. Erroneous implies right type and wrong result. Failure implies wrong type.
+To get more details about syntax, please refer to manual page of <cite class='kw'>TestCaseDefinition</cite>.</p>
+</div>
+<div id="discovering-test-cases" class="section level2">
+<h2><span class="header-section-number">8.2</span> Discovering test cases</h2>
+<p>The considered <cite class='it'>R</cite> object has to be instrumented with test case definitions.</p>
+<div id="test-case-verifications" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Test case verifications</h3>
+<p>To verify test cases definitions use function <cite class='kw'>verifyTestCaseDefinitions</cite>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">verifyTestCaseDefinitions</span>(<span class="kw">AdditionTCFIG1</span>())</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co">#&gt; $validity</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb33-5" data-line-number="5"><span class="co">#&gt; $check</span></a>
+<a class="sourceLine" id="cb33-6" data-line-number="6"><span class="co">#&gt; [1] &quot;full instrumentation check&quot;</span></a>
+<a class="sourceLine" id="cb33-7" data-line-number="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb33-8" data-line-number="8"><span class="co">#&gt; $class</span></a>
+<a class="sourceLine" id="cb33-9" data-line-number="9"><span class="co">#&gt; [1] &quot;AdditionTCFIG1&quot;</span></a>
+<a class="sourceLine" id="cb33-10" data-line-number="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb33-11" data-line-number="11"><span class="co">#&gt; $intent</span></a>
+<a class="sourceLine" id="cb33-12" data-line-number="12"><span class="co">#&gt; [1] &quot;naming and instrumentation format and content seems good&quot;</span></a>
+<a class="sourceLine" id="cb33-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb33-14" data-line-number="14"><span class="co">#&gt; $message</span></a>
+<a class="sourceLine" id="cb33-15" data-line-number="15"><span class="co">#&gt; [1] &quot;success&quot;</span></a></code></pre></div>
+<p>Here, the validity flag is <cite class='kw'>TRUE</cite> and checks have been done against full instrumentation, meaning each function of the object must own at least one associated test case.</p>
+<p>If this does not match your need, specify <cite class='kw'>requiresFullInstrumentation_b_1 = FALSE</cite> as parameter to the call.</p>
+</div>
+<div id="getting-instrumented-functions" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Getting instrumented functions</h3>
+<p>Use function <cite class='kw'>retrieveTestCaseDefinitions</cite> to get access to recorded test case definitions</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">tc &lt;-<span class="st"> </span><span class="kw">retrieveTestCaseDefinitions</span>(<span class="kw">AdditionTCFIG1</span>())</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="cf">if</span> (<span class="kw">is.data.table</span>(tc)) {</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">  tc[, .N, by =<span class="st"> &#39;function_name&#39;</span>]</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co">#&gt;      function_name N</span></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">#&gt; 1:       addDouble 9</span></a>
+<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="co">#&gt; 2:      addInteger 9</span></a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="co">#&gt; 3:    divideByZero 3</span></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="co">#&gt; 4: generateWarning 1</span></a>
+<a class="sourceLine" id="cb34-11" data-line-number="11"><span class="co">#&gt; 5:   generateError 1</span></a>
+<a class="sourceLine" id="cb34-12" data-line-number="12"><span class="co">#&gt; 6:  addMultiDouble 3</span></a>
+<a class="sourceLine" id="cb34-13" data-line-number="13"><span class="co">#&gt; 7: addMultiInteger 3</span></a></code></pre></div>
+<div id="no-test-cases-instrumentation" class="section level4">
+<h4><span class="header-section-number">8.2.2.1</span> No test cases instrumentation</h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">retrieveTestCaseDescriptions</span>(<span class="kw">Addition</span>())</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co">#&gt; [1] &quot;provided object owns no test case definitions&quot;</span></a></code></pre></div>
+</div>
+</div>
+<div id="getting-test-cases-descriptions" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> Getting test cases descriptions</h3>
+<p>Use function <cite class='kw'>retrieveTestCaseDescriptions</cite> to get access to recorded test case descriptions.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">tc &lt;-<span class="st"> </span><span class="kw">retrieveTestCaseDescriptions</span>(<span class="kw">AdditionTCFIG1</span>())</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="cf">if</span> (<span class="kw">is.data.table</span>(tc)) {</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">  <span class="kw">cat</span>(<span class="kw">nrow</span>(tc), <span class="st">&#39;test cases</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">  tc[, .N, by =<span class="st"> &#39;function_name&#39;</span>]</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="co">#&gt; 29 test cases</span></a>
+<a class="sourceLine" id="cb36-8" data-line-number="8"><span class="co">#&gt;      function_name N</span></a>
+<a class="sourceLine" id="cb36-9" data-line-number="9"><span class="co">#&gt; 1:       addDouble 9</span></a>
+<a class="sourceLine" id="cb36-10" data-line-number="10"><span class="co">#&gt; 2:      addInteger 9</span></a>
+<a class="sourceLine" id="cb36-11" data-line-number="11"><span class="co">#&gt; 3:    divideByZero 3</span></a>
+<a class="sourceLine" id="cb36-12" data-line-number="12"><span class="co">#&gt; 4: generateWarning 1</span></a>
+<a class="sourceLine" id="cb36-13" data-line-number="13"><span class="co">#&gt; 5:   generateError 1</span></a>
+<a class="sourceLine" id="cb36-14" data-line-number="14"><span class="co">#&gt; 6:  addMultiDouble 3</span></a>
+<a class="sourceLine" id="cb36-15" data-line-number="15"><span class="co">#&gt; 7: addMultiInteger 3</span></a></code></pre></div>
+<p>Getting test case description for function <cite class='kw'>divideByZero</cite>, can be achieved with a sequence like</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">tc[function_name <span class="op">==</span><span class="st"> &#39;divideByZero&#39;</span>]</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co">#&gt;    function_name description</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="co">#&gt; 1:  divideByZero       1 / 0</span></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="co">#&gt; 2:  divideByZero      -1 / 0</span></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="co">#&gt; 3:  divideByZero       0 / 0</span></a></code></pre></div>
+<p>Of course, no obligation to restrict output to a single function as in this example.</p>
+<p>Do not be fooled, description is text not code as you could deduce from previous example. See below.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">tc[function_name <span class="op">==</span><span class="st"> &#39;generateWarning&#39;</span>]</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co">#&gt;      function_name      description</span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">#&gt; 1: generateWarning generate warning</span></a></code></pre></div>
+</div>
+</div>
+<div id="running-test-cases-1" class="section level2">
+<h2><span class="header-section-number">8.3</span> Running test cases</h2>
+<div id="run-a-single-test-case" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Run a single test case</h3>
+<p>I want to run the test number 4 of object <cite class='kw'>AdditionTCFIG1</cite>.
+Let’s first, know more about it.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">test_to_run &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">obj &lt;-<span class="st"> </span><span class="kw">AdditionTCFIG1</span>() <span class="co"># instanciate your object</span></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">tc &lt;-<span class="st"> </span><span class="kw">retrieveTestCaseDefinitions</span>(obj)[test_to_run]</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="kw">print</span>(tc)</a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="co">#&gt;    function_name standard_evaluation type_checking_enforcement</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co">#&gt; 1:     addDouble             correct                   correct</span></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co">#&gt;               test_case</span></a>
+<a class="sourceLine" id="cb39-8" data-line-number="8"><span class="co">#&gt; 1: &lt;TestCaseDefinition&gt;</span></a>
+<a class="sourceLine" id="cb39-9" data-line-number="9">tc[<span class="dv">1</span>]<span class="op">$</span>test_case[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb39-10" data-line-number="10"><span class="co">#&gt; $params</span></a>
+<a class="sourceLine" id="cb39-11" data-line-number="11"><span class="co">#&gt; $params[[1]]</span></a>
+<a class="sourceLine" id="cb39-12" data-line-number="12"><span class="co">#&gt; [1] NaN</span></a>
+<a class="sourceLine" id="cb39-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb39-14" data-line-number="14"><span class="co">#&gt; $params[[2]]</span></a>
+<a class="sourceLine" id="cb39-15" data-line-number="15"><span class="co">#&gt; [1] NaN</span></a>
+<a class="sourceLine" id="cb39-16" data-line-number="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb39-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb39-18" data-line-number="18"><span class="co">#&gt; $expected_result</span></a>
+<a class="sourceLine" id="cb39-19" data-line-number="19"><span class="co">#&gt; [1] NaN</span></a>
+<a class="sourceLine" id="cb39-20" data-line-number="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb39-21" data-line-number="21"><span class="co">#&gt; $description</span></a>
+<a class="sourceLine" id="cb39-22" data-line-number="22"><span class="co">#&gt; [1] &quot;sum 2 NAN&quot;</span></a></code></pre></div>
+<p>To run the chosen test case, use function <cite class='kw'>runTestCase</cite>.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">rtc &lt;-<span class="st"> </span><span class="kw">runTestCase</span>(obj, test_to_run, emo<span class="op">$</span>type)</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2">rtc<span class="op">$</span>synthesis</a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="co">#&gt;    status                      mode index value_check function_return_check</span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="co">#&gt; 1:   TRUE type_checking_enforcement     4        TRUE                  TRUE</span></a>
+<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="co">#&gt;    parameter_check expected_evaluation execution_evaluation failure_origin</span></a>
+<a class="sourceLine" id="cb40-6" data-line-number="6"><span class="co">#&gt; 1:            TRUE             correct              correct           &lt;NA&gt;</span></a></code></pre></div>
+<p>Result has two parts. A raw part, that holds the intermediate computation results, and a synthesis part, that is the only one shown above.</p>
+<p>Here, the status flag is <cite class='kw'>TRUE</cite> meaning test case behaves perfectly in accordance with declared semantic names, under provided values.</p>
+</div>
+<div id="run-several-test-cases" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Run several test cases</h3>
+<p>You can provide a vector instead of a single test number if you want to run several use test cases in one call.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">test_to_run &lt;-<span class="st"> </span><span class="dv">12</span><span class="op">:</span><span class="dv">14</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">tc &lt;-<span class="st"> </span><span class="kw">retrieveTestCaseDefinitions</span>(obj)[test_to_run]</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="kw">print</span>(tc)</a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="co">#&gt;    function_name standard_evaluation type_checking_enforcement</span></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="co">#&gt; 1:    addInteger             correct                   correct</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6"><span class="co">#&gt; 2:    addInteger             correct                   correct</span></a>
+<a class="sourceLine" id="cb41-7" data-line-number="7"><span class="co">#&gt; 3:    addInteger           erroneous                   failure</span></a>
+<a class="sourceLine" id="cb41-8" data-line-number="8"><span class="co">#&gt;               test_case</span></a>
+<a class="sourceLine" id="cb41-9" data-line-number="9"><span class="co">#&gt; 1: &lt;TestCaseDefinition&gt;</span></a>
+<a class="sourceLine" id="cb41-10" data-line-number="10"><span class="co">#&gt; 2: &lt;TestCaseDefinition&gt;</span></a>
+<a class="sourceLine" id="cb41-11" data-line-number="11"><span class="co">#&gt; 3: &lt;TestCaseDefinition&gt;</span></a>
+<a class="sourceLine" id="cb41-12" data-line-number="12"><span class="kw">lapply</span>(<span class="kw">seq_len</span>(<span class="kw">nrow</span>(tc)), <span class="cf">function</span>(k) <span class="kw">print</span>(tc[k]<span class="op">$</span>test_case[[<span class="dv">1</span>]]))</a>
+<a class="sourceLine" id="cb41-13" data-line-number="13"><span class="co">#&gt; $params</span></a>
+<a class="sourceLine" id="cb41-14" data-line-number="14"><span class="co">#&gt; $params[[1]]</span></a>
+<a class="sourceLine" id="cb41-15" data-line-number="15"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb41-16" data-line-number="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-17" data-line-number="17"><span class="co">#&gt; $params[[2]]</span></a>
+<a class="sourceLine" id="cb41-18" data-line-number="18"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb41-19" data-line-number="19"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-20" data-line-number="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-21" data-line-number="21"><span class="co">#&gt; $expected_result</span></a>
+<a class="sourceLine" id="cb41-22" data-line-number="22"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb41-23" data-line-number="23"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-24" data-line-number="24"><span class="co">#&gt; $description</span></a>
+<a class="sourceLine" id="cb41-25" data-line-number="25"><span class="co">#&gt; [1] &quot;sum 2 NA_integer&quot;</span></a>
+<a class="sourceLine" id="cb41-26" data-line-number="26"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-27" data-line-number="27"><span class="co">#&gt; $params</span></a>
+<a class="sourceLine" id="cb41-28" data-line-number="28"><span class="co">#&gt; $params[[1]]</span></a>
+<a class="sourceLine" id="cb41-29" data-line-number="29"><span class="co">#&gt; [1] 45</span></a>
+<a class="sourceLine" id="cb41-30" data-line-number="30"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-31" data-line-number="31"><span class="co">#&gt; $params[[2]]</span></a>
+<a class="sourceLine" id="cb41-32" data-line-number="32"><span class="co">#&gt; [1] 44</span></a>
+<a class="sourceLine" id="cb41-33" data-line-number="33"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-34" data-line-number="34"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-35" data-line-number="35"><span class="co">#&gt; $expected_result</span></a>
+<a class="sourceLine" id="cb41-36" data-line-number="36"><span class="co">#&gt; [1] 89</span></a>
+<a class="sourceLine" id="cb41-37" data-line-number="37"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-38" data-line-number="38"><span class="co">#&gt; $description</span></a>
+<a class="sourceLine" id="cb41-39" data-line-number="39"><span class="co">#&gt; [1] &quot;sum a converted string with one integer&quot;</span></a>
+<a class="sourceLine" id="cb41-40" data-line-number="40"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-41" data-line-number="41"><span class="co">#&gt; $params</span></a>
+<a class="sourceLine" id="cb41-42" data-line-number="42"><span class="co">#&gt; $params[[1]]</span></a>
+<a class="sourceLine" id="cb41-43" data-line-number="43"><span class="co">#&gt; [1] 34</span></a>
+<a class="sourceLine" id="cb41-44" data-line-number="44"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-45" data-line-number="45"><span class="co">#&gt; $params[[2]]</span></a>
+<a class="sourceLine" id="cb41-46" data-line-number="46"><span class="co">#&gt; [1] 44.5</span></a>
+<a class="sourceLine" id="cb41-47" data-line-number="47"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-48" data-line-number="48"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-49" data-line-number="49"><span class="co">#&gt; $expected_result</span></a>
+<a class="sourceLine" id="cb41-50" data-line-number="50"><span class="co">#&gt; [1] 78</span></a>
+<a class="sourceLine" id="cb41-51" data-line-number="51"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-52" data-line-number="52"><span class="co">#&gt; $description</span></a>
+<a class="sourceLine" id="cb41-53" data-line-number="53"><span class="co">#&gt; [1] &quot;sum 1 integer and 1 double&quot;</span></a>
+<a class="sourceLine" id="cb41-54" data-line-number="54"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb41-55" data-line-number="55"><span class="co">#&gt; [[1]]$params</span></a>
+<a class="sourceLine" id="cb41-56" data-line-number="56"><span class="co">#&gt; [[1]]$params[[1]]</span></a>
+<a class="sourceLine" id="cb41-57" data-line-number="57"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb41-58" data-line-number="58"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-59" data-line-number="59"><span class="co">#&gt; [[1]]$params[[2]]</span></a>
+<a class="sourceLine" id="cb41-60" data-line-number="60"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb41-61" data-line-number="61"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-62" data-line-number="62"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-63" data-line-number="63"><span class="co">#&gt; [[1]]$expected_result</span></a>
+<a class="sourceLine" id="cb41-64" data-line-number="64"><span class="co">#&gt; [1] NA</span></a>
+<a class="sourceLine" id="cb41-65" data-line-number="65"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-66" data-line-number="66"><span class="co">#&gt; [[1]]$description</span></a>
+<a class="sourceLine" id="cb41-67" data-line-number="67"><span class="co">#&gt; [1] &quot;sum 2 NA_integer&quot;</span></a>
+<a class="sourceLine" id="cb41-68" data-line-number="68"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-69" data-line-number="69"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-70" data-line-number="70"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb41-71" data-line-number="71"><span class="co">#&gt; [[2]]$params</span></a>
+<a class="sourceLine" id="cb41-72" data-line-number="72"><span class="co">#&gt; [[2]]$params[[1]]</span></a>
+<a class="sourceLine" id="cb41-73" data-line-number="73"><span class="co">#&gt; [1] 45</span></a>
+<a class="sourceLine" id="cb41-74" data-line-number="74"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-75" data-line-number="75"><span class="co">#&gt; [[2]]$params[[2]]</span></a>
+<a class="sourceLine" id="cb41-76" data-line-number="76"><span class="co">#&gt; [1] 44</span></a>
+<a class="sourceLine" id="cb41-77" data-line-number="77"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-78" data-line-number="78"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-79" data-line-number="79"><span class="co">#&gt; [[2]]$expected_result</span></a>
+<a class="sourceLine" id="cb41-80" data-line-number="80"><span class="co">#&gt; [1] 89</span></a>
+<a class="sourceLine" id="cb41-81" data-line-number="81"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-82" data-line-number="82"><span class="co">#&gt; [[2]]$description</span></a>
+<a class="sourceLine" id="cb41-83" data-line-number="83"><span class="co">#&gt; [1] &quot;sum a converted string with one integer&quot;</span></a>
+<a class="sourceLine" id="cb41-84" data-line-number="84"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-85" data-line-number="85"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-86" data-line-number="86"><span class="co">#&gt; [[3]]</span></a>
+<a class="sourceLine" id="cb41-87" data-line-number="87"><span class="co">#&gt; [[3]]$params</span></a>
+<a class="sourceLine" id="cb41-88" data-line-number="88"><span class="co">#&gt; [[3]]$params[[1]]</span></a>
+<a class="sourceLine" id="cb41-89" data-line-number="89"><span class="co">#&gt; [1] 34</span></a>
+<a class="sourceLine" id="cb41-90" data-line-number="90"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-91" data-line-number="91"><span class="co">#&gt; [[3]]$params[[2]]</span></a>
+<a class="sourceLine" id="cb41-92" data-line-number="92"><span class="co">#&gt; [1] 44.5</span></a>
+<a class="sourceLine" id="cb41-93" data-line-number="93"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-94" data-line-number="94"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-95" data-line-number="95"><span class="co">#&gt; [[3]]$expected_result</span></a>
+<a class="sourceLine" id="cb41-96" data-line-number="96"><span class="co">#&gt; [1] 78</span></a>
+<a class="sourceLine" id="cb41-97" data-line-number="97"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb41-98" data-line-number="98"><span class="co">#&gt; [[3]]$description</span></a>
+<a class="sourceLine" id="cb41-99" data-line-number="99"><span class="co">#&gt; [1] &quot;sum 1 integer and 1 double&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">rtc &lt;-<span class="st"> </span><span class="kw">runTestCase</span>(obj, test_to_run, emo<span class="op">$</span>type)</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">rtc<span class="op">$</span>synthesis</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="co">#&gt;    status                      mode index value_check function_return_check</span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="co">#&gt; 1:   TRUE type_checking_enforcement    12        TRUE                  TRUE</span></a>
+<a class="sourceLine" id="cb42-5" data-line-number="5"><span class="co">#&gt; 2:   TRUE type_checking_enforcement    13        TRUE                  TRUE</span></a>
+<a class="sourceLine" id="cb42-6" data-line-number="6"><span class="co">#&gt; 3:  FALSE type_checking_enforcement    14       FALSE                 FALSE</span></a>
+<a class="sourceLine" id="cb42-7" data-line-number="7"><span class="co">#&gt;    parameter_check expected_evaluation execution_evaluation</span></a>
+<a class="sourceLine" id="cb42-8" data-line-number="8"><span class="co">#&gt; 1:            TRUE             correct              correct</span></a>
+<a class="sourceLine" id="cb42-9" data-line-number="9"><span class="co">#&gt; 2:            TRUE             correct              correct</span></a>
+<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="co">#&gt; 3:           FALSE             failure              failure</span></a>
+<a class="sourceLine" id="cb42-11" data-line-number="11"><span class="co">#&gt;                             failure_origin</span></a>
+<a class="sourceLine" id="cb42-12" data-line-number="12"><span class="co">#&gt; 1:                                    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb42-13" data-line-number="13"><span class="co">#&gt; 2:                                    &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb42-14" data-line-number="14"><span class="co">#&gt; 3: value check, function return type check</span></a></code></pre></div>
+<p>Test 14 fails under chosen evaluation mode, and therefore requires a fix.</p>
+<p>Here looking at raw results will provide root causes of failure. Provided values are double, whereas integers were expected. To understand the full details, you will have to run this example and to print rtc globally to get access to many details <cit class='kw'>far too long to be displayed here</cite>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="running-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="generating-testthat-test-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "night",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>
